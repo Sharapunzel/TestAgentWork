@@ -55,3 +55,17 @@ Build the frontend directly with:
 cd frontend
 npm run build
 ```
+
+## Local database migrations
+
+Migrations require an explicit SQLite URL. From `backend`, create the ignored
+runtime directory and set `NLE_DATABASE_URL` before running Alembic:
+
+```sh
+mkdir -p runtime
+export NLE_DATABASE_URL=sqlite:///./runtime/nginx-log-explorer.sqlite
+uv run alembic upgrade head
+uv run alembic downgrade base
+```
+
+The application does not create or migrate a database during import or startup.

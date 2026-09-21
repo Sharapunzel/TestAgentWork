@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "Backend foundation for Nginx Log Explorer"
 requires-python = ">=3.12,<3.13"
 dependencies = [
+    "alembic==1.20.0",
     "fastapi==0.141.1",
+    "sqlalchemy==2.0.54",
     "uvicorn==0.34.0",
 ]
 

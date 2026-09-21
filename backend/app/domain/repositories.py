@@ -1,0 +1,16 @@
+from typing import Protocol, Sequence
+from uuid import UUID
+
+from app.domain.models import LogEntry, LogImport
+
+
+class LogRepository(Protocol):
+    def add_import(self, log_import: LogImport) -> None: ...
+
+    def get_import(self, import_id: UUID) -> LogImport | None: ...
+
+    def add_entries(self, entries: Sequence[LogEntry]) -> None: ...
+
+    def list_entries(self, import_id: UUID) -> Sequence[LogEntry]: ...
+
+    def delete_import(self, import_id: UUID) -> bool: ...
